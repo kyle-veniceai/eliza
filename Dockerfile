@@ -52,7 +52,8 @@ RUN npm install -g pnpm@9.15.4 && \
     apt-get install -y \
     git \
     python3 \
-    ffmpeg && \
+    ffmpeg \
+    gettext-base && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -71,6 +72,9 @@ COPY --from=builder /app/lerna.json ./
 COPY --from=builder /app/packages ./packages
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/characters ./characters
+
+RUN envsubst < ./characters/user.character.json > ./characters/user.character.json.tmp
+RUN mv ./characters/user.character.json.tmp ./characters/user.character.json
 
 # Expose necessary ports
 EXPOSE 3000 5173
