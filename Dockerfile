@@ -73,11 +73,11 @@ COPY --from=builder /app/packages ./packages
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/characters ./characters
 
-RUN envsubst < ./characters/user.character.json > ./characters/user.character.json.tmp
-RUN mv ./characters/user.character.json.tmp ./characters/user.character.json
+RUN printenv
 
 # Expose necessary ports
 EXPOSE 3000 5173
 
 # Command to start the application
-CMD ["sh", "-c", "pnpm start & pnpm start:client"]
+CMD ["sh", "-c", "envsubst < ./characters/user.character.json > ./characters/user.character.json.tmp && mv ./characters/user.character.json.tmp ./characters/user.character.json"]
+ENTRYPOINT ["sh", "-c", "pnpm start --characters=./characters/user.character.json & pnpm start:client"]
