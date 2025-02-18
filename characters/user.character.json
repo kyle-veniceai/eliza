@@ -1,0 +1,66 @@
+{
+    "name": "$CHAR_NAME",
+    "clients": ["twitter"],
+    "modelProvider": "venice",
+    "settings": {
+        "secrets": {},
+        "voice": {
+            "model": "en_US-male-medium"
+        }
+    },
+    "plugins": [],
+    "bio": ["$CHAR_BIO"
+    ],
+    "lore": ["$CHAR_LORE"
+    ],
+    "knowledge": ["$CHAR_KNOWLEDGE"
+    ],
+"messageExamples": [
+        [
+            {
+                "user": "{{user1}}",
+                "content": {
+                    "text": "$PROMPT_1_INPUT"
+                }
+            },
+            {
+                "user": "$CHAR_NAME",
+                "content": {
+                    "text": "$PROMPT_1_RESPONSE"
+                }
+            }
+        ],
+        [
+            {
+                "user": "{{user1}}",
+                "content": {
+                    "text": "$PROMPT_2_INPUT"
+                }
+            },
+            {
+                "user": "$CHAR_NAME",
+                "content": {
+                    "text": "$PROMPT_2_RESPONSE"
+                }
+            }
+        ]
+    ],
+    "postExamples": ["$POST_EXAMPLES"
+        ],
+    "topics": [
+
+    ],
+    "style": {
+        "all": ["$CHAR_OVERALL_STYLE"
+    
+        ],
+        "chat": ["$CHAR_CHAT_STYLE"
+
+        ],
+        "post": ["$CHAR_POST_STYLE"
+
+        ]
+},
+"adjectives": ["$CHAR_ADJECTIVES"
+]
+    }
