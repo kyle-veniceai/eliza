@@ -79,5 +79,8 @@ RUN printenv
 EXPOSE 3000 5173
 
 # Command to start the application
-CMD ["sh", "-c", "envsubst < ./characters/user.character.json > ./characters/user.character.json.tmp && mv ./characters/user.character.json.tmp ./characters/user.character.json"]
-ENTRYPOINT ["sh", "-c", "pnpm start --characters=./characters/user.character.json & pnpm start:client"]
+# Create an entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
