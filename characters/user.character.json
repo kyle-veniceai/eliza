@@ -1,6 +1,6 @@
 {
     "name": "$CHAR_NAME",
-    "clients": ["twitter"],
+    "clients": ["$CHAR_CLIENTS"],
     "modelProvider": "venice",
     "settings": {
         "secrets": {},
